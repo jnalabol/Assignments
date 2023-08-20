@@ -1,0 +1,34 @@
+
+1) 
+create table department(dept_no int,dept_name text,dept_location text,primary key(dept_no));
+ insert into department values(1,"Engineering","Hyd");
+ insert into department values(2,"Marketing","Blr");
+ insert into department values(3,"Designing","pune");
+ select * from department;
+ +---------+-------------+---------------+
+| dept_no | dept_name   | dept_location |
++---------+-------------+---------------+
+|       1 | Engineering | Hyd           |
+|       2 | Marketing   | Blr           |
+|       3 | Designing   | pune          |
++---------+-------------+---------------+
+
+2)
+Create table employee(emp_no int, emp_age int,emp_name text,emp_gender char,dept_no int,primary key(emp_no),check (emp_age>=18 AND emp_gender in("M","F")),foreign key(dept_no) references department(dept_no) on delete cascade);
+Query OK, 0 rows affected (0.03 sec)
+insert into employee values(121,19, "Jyoshna","F",1);
+insert into employee values(123,20, "Mouni","F",3);
+insert into employee values(124,22, "Mahesh","M",1);
+select * from employee;
++--------+---------+----------+------------+---------+
+| emp_no | emp_age | emp_name | emp_gender | dept_no |
++--------+---------+----------+------------+---------+
+|    121 |      19 | Jyoshna  | F          |       1 |
+|    122 |      20 | Sahi     | F          |       2 |
+|    123 |      20 | Mouni    | F          |       3 |
+|    124 |      22 | Mahesh   | M          |       1 |
++--------+---------+----------+------------+---------+
+
+Violation when check consttraint isnt obeyed
+insert into employee values(122,17, "sahi","F",2);
+ERROR 3819 (HY000): Check constraint 'employee_chk_1' is violated.
