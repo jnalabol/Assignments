@@ -1,4 +1,4 @@
-
+Assignment -1
 1) 
 create table department(dept_no int,dept_name text,dept_location text,primary key(dept_no));
  insert into department values(1,"Engineering","Hyd");
@@ -32,3 +32,11 @@ select * from employee;
 Violation when check consttraint isnt obeyed
 insert into employee values(122,17, "sahi","F",2);
 ERROR 3819 (HY000): Check constraint 'employee_chk_1' is violated.
+
+Assignment-2
+
+1)create table course(course_id int, course_name text);
+2)create table coursecopy as select * from course;
+a)alter table course add (course_faculty text,course_time int);
+b)alter table course drop column course_faculty,drop column course_name;
+c)alter table course rename column course_id to course_no;
