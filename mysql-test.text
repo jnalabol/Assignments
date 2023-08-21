@@ -1,0 +1,21 @@
+Q-1
+1)create table department(dept_no int,dept_name text, dept_manager text,address_id text);
+2)create table address (address_id text,city text ,state text);
+3)create table employee(emp_no int,emp_name text,emp_sal double,dept_no int);
+Inner query:
+select emp_no,emp_name,emp_sal,d.dept_no,dept_name,dept_manager,a.address_id from employee e,department d,address a where e.dept_no = d.dept_no and d.address_id=a.address_id;
++--------+----------+---------+---------+-----------+--------------+------------+
+| emp_no | emp_name | emp_sal | dept_no | dept_name | dept_manager | address_id |
++--------+----------+---------+---------+-----------+--------------+------------+
+|      1 | Jyo      |   20000 |     100 | CSE       | MADHU        | MYP        |
+|      2 | Mouni    |   30000 |     200 | EEE       | DASARADH     | KPHB       |
++--------+----------+---------+---------+-----------+--------------+------------+
+
+Q-2
+1)create table bankaccount(acc_no int primary key,acc_opened_date date,status text, balance double);
+2)create table transaction(acc_no int,trans_date date,trans_type char,trans_amount double,foreign key(acc_no)references bankaccount(acc_no) on delete cascade);
+
+
+Q-3
+1)select sum(emp_sal),department,manager_name from employee group by department,manager_name;
+2)select emp_name,emp_sal from employee order by emp_sal desc limit 1 offset 3;
