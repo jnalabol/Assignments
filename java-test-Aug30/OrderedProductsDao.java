@@ -23,7 +23,7 @@ public class OrderedProductsDao {
             }
         }
         public void displayOrderedProductsByOrderDate(String orderDate){
-            try(Connection con = DriverManager.getConnection(url, "root", "Bh@rgav2811");
+            try(Connection con = DriverManager.getConnection(url, "root", "Bramaramba@24");
                 PreparedStatement p = con.prepareStatement("select P.prod_id, prod_name,prod_desc,prod_price,prod_quantity,O.order_date from Product P, ordered_products Op, orders O where P.prod_id = Op.prod_id and Op.order_id = O.order_id and O.order_date = ?")){
                 p.setString(1,o.getOrder_date());
                 ResultSet rs = p.executeQuery();
