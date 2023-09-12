@@ -1,0 +1,7 @@
+1)Insert command:
+db.employees.insertOne({"Name":"John Smith","Position":"Software Engineer","Department":"Engineering","Salary":"85,000","Hire Date":" January 15, 2023"});
+2)Update command:db.employees.updateMany({"Position":"Software Engineer"},{$set:{"Salary":90000}});
+3)Query data: db.employees.find({$and:[{"Department":"Engineering"},{"Salary":{$gt:80000}}]});
+4)Delete data: db.employees.deleteMany({"Department":"Marketing"});
+5)Data Aggregation:db.Orders.aggregate([{$match:{order_date:{$gt:ISODate("2023-05-30T00:00:00Z"),$lt:ISODate("2023-08-30T00:00:00Z") } } }, { $group: { _id: null, totalRevenue: { $sum: "total_price"}}}]);
+6)Indexing: db.products.createIndex({"product_code":1});db.products.getIndexes();
